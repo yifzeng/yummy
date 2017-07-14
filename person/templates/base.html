@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>颜值最高的相亲平台</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  
+  <script>
+  $(function() {
+    $( "#postdate_begin" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#postdate_end" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#postdate_end" ).datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      onClose: function( selectedDate ) {
+        $( "#postdate_begin" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+  </script>
+</head>
+
+<body>
+
+    <h1>颜值最高的相亲平台</h1>
+     <form action="/person/" method="GET">
+         {{ form }}    
+        <input type="submit" value="查询" class="btn btn-default">
+    </form>
+	
+	<p>需要删除个人信息或发布交友信息的请发邮件到</p>
+    {% block content %}{% endblock %}
+    {% block footer %}
+    <hr>
+    
+    {% endblock %}
+</body>
+</html>

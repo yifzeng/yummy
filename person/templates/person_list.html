@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+<div class="content_middle">
+   <div class="btn-group" >
+   
+    <ul>
+        {% for person in persons %}
+            <li><img src="/static/pic/{{ person.idnum }}.jpeg" class="img-responsive" alt="Responsive image"/></li>
+		    <li>期数：{{ person.volume }}</li>
+			<li>发布日期：{{ person.postdate }}</li>
+			<li>自我介绍：{{ person.dec }}</li>
+			<li>{{teststr}}<li>
+        {% endfor %}
+    </ul>
+	
+	{% if persons.has_previous %}
+        <a href="/person?page={{ persons.previous_page_number }}&gender={{ form.gender.value }}&city={{ form.city.value }}">上一页</a>
+    {% endif %}
+ 
+    {% for number in persons.paginator.page_range %}
+        {% if number == persons.number %}
+            <a href="/person?page={{ number }}&gender={{ form.gender.value }}&city={{ form.city.value }}" style="font-size: 33px">{{ number }}</a>
+        {% else %}
+            <a href="/person?page={{ number }}&gender={{ form.gender.value }}&city={{ form.city.value }}" >{{ number }}</a>
+        {% endif %}
+ 
+    {% endfor %} 
+    {% if persons.has_next %}
+        <a href="/person?page={{ persons.next_page_number }}&gender={{ form.gender.value }}&city={{ form.city.value }}">下一页</a>
+    {% endif %}
+    <span>{{ persons.number }} /{{ persons.paginator.num_pages }}</span>
+ </div>
+</div>
+{% endblock %}
