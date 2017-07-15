@@ -46,20 +46,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">关于</a>
-                    </li>
-                    <li>
-                        <a href="#">联系我</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">Portfolio</a>
+                        <a href="#contact">联系我</a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -67,10 +57,10 @@
     </nav>
     <div class="container">
       <div class="col-md-6 portfolio-item">
-      <p></p>
+        <br></br>
       <form action="/person/" method="GET">
           {{ form }}
-         <input type="submit" value="查询" class="btn btn-default">
+         <input type="submit" value="查询" class="btn btn-primary">
      </form>
    </div>
     </div>
@@ -144,20 +134,17 @@
 	<footer>
 		<div class="footer-blurb">
 			<div class="container">
-				<div class="row">
 					<div class="col-sm-12 footer-blurb-item">
 						<h3>如需删除个人信息或投稿</h3>
-						<p>请发邮件到 Example.com </p>
-
+						<a id="contact">请发邮件到 Example.com </a>
 					</div>
-				</div>
 				<!-- /.row -->
 			</div>
         </div>
 
         <div class="copyright">
         	<div class="container">
-        		<p>欢迎转发此平台给你们的朋友</p>
+        		<p>欢迎将此平台告诉你的朋友们</p>
         	</div>
         </div>
 	</footer>

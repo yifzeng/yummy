@@ -2,8 +2,8 @@ from django import forms
 from person.models import Person
 
 class Personform(forms.Form):
-    gender = forms.ChoiceField(required=True,choices=((u'男', u'男'), (u'女', u'女')))
-    city = forms.CharField(required=True,label=u'城市',max_length=50)
+    gender = forms.ChoiceField(required=True,label=u'性别',choices=((u'男', u'男'), (u'女', u'女')))
+    city = forms.CharField(required=True,label=u'  坐标(城市)',max_length=50)
     class Meta:
        model = Person
        fields = ('gender', 'city',)
