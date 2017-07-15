@@ -12,14 +12,23 @@ import datetime,time
 
 def pseron_list(request):
     persons = []
-    
+    after_range_num = 3  
+    bevor_range_num = 1 
     if request.GET:
         form = Personform(request.GET)        
         ctx = request.GET
         personslist = Person.objects.filter(Q(city__icontains=ctx['city']) & Q(gender=ctx['gender']))
-        print(personslist.count())            
-        paginator = Paginator(personslist, 10) # Show 25 contacts per page
-        page = request.GET.get('page')
+        print('personslist----->',personslist.count())            
+        paginator = Paginator(personslist, 6) # Show 25 contacts per page
+      
+        try:  
+            page = int(request.GET.get("page",1))  
+            print('page----->',page)  
+            if page < 1:  
+                page = 1  
+        except ValueError:  
+            page = 1  
+            
         try:
             persons = paginator.page(page)
         except PageNotAnInteger:
@@ -29,12 +38,17 @@ def pseron_list(request):
                 # If page is out of range (e.g. 9999), deliver last page of results.
             persons = paginator.page(paginator.num_pages)
         
-        return render(request, 'person_list.html', {'persons': persons,'form':form})
+        if page >= after_range_num:  
+            page_range = paginator.page_range[page-after_range_num:page+bevor_range_num]  
+        else:  
+            page_range = paginator.page_range[0:int(page)+bevor_range_num] 
+        print('page_range----->',page_range)  
+        return render(request, 'index.html', {'persons': persons,'form':form,'page_range':page_range})
        
     else:
          print(" NOT request.GET")
          form = Personform(initial={'gender': '女'})
-         return render(request, 'person_list.html', {'persons': persons,'form':form})
+         return render(request, 'index.html', {'persons': persons,'form':form})
 
 
 
