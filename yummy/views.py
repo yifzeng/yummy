@@ -13,7 +13,7 @@ import datetime,time
 def pseron_list(request):
     persons = []
     after_range_num = 3  
-    bevor_range_num = 1 
+    bevor_range_num = 2 
     if request.GET:
         form = Personform(request.GET)        
         ctx = request.GET
