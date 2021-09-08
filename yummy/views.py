@@ -83,7 +83,7 @@ def contact(request):
             )
             return HttpResponseRedirect('/contact/thanks/')
     else:
-        form = ContactForm(initial={'subject': '王晨我爱你!'})
+        form = ContactForm(initial={'subject': 'cool'})
     return render_to_response('contact_form.html', {'form': form})
 
 def thanks(request):
